@@ -7,7 +7,7 @@ from .FastTelethon import download_file, upload_file
 from .funcn import *
 from .config import *
 
-
+backup_id = -1001258776101
 async def stats(e):
     try:
         wah = e.pattern_match.group(1).decode("UTF-8")
@@ -55,7 +55,7 @@ async def dl_link(event):
     aa = kk.split(".")[-1]
     newFile = dl.replace(f"downloads/", "").replace(f"_", " ")
     rr = "encode"
-    bb = kk.replace(f".{aa}", ".mkv")
+    bb = kk.replace(f".{aa}", " [720p x265] @animxt.mkv")
     out = f"{rr}/{bb}"
     thum = "thumb.jpg"
     dtime = ts(int((es - s).seconds) * 1000)
@@ -188,7 +188,7 @@ async def encod(event):
         kk = dl.split("/")[-1]
         aa = kk.split(".")[-1]
         rr = f"encode"
-        bb = kk.replace(f".{aa}", ".mkv")
+        bb = kk.replace(f".{aa}", " [720p x265] @animxt.mkv")
         newFile = dl.replace(f"downloads/", "").replace(f"_", " ")
         out = f"{rr}/{bb}"
         thum = "thumb.jpg"
@@ -243,7 +243,7 @@ async def encod(event):
         a2 = await info(out, e)
         dk = f"<b>File Name:</b> {newFile}\n\n<b>Original File Size:</b> {hbs(org)}\n<b>Encoded File Size:</b> {hbs(com)}\n<b>Encoded Percentage:</b> {per}\n\n<b>Get Mediainfo Here:</b> <a href='{a1}'>Before</a>/<a href='{a2}'>After</a>\n\n<i>Downloaded in {x}\nEncoded in {xx}\nUploaded in {xxx}</i>"
         ds = await e.client.send_file(
-            e.chat_id, file=ok, force_document=True, caption=dk, link_preview=False, thumb=thum, parse_mode="html"
+            backup_id, e.chat_id, file=ok, force_document=True, caption=dk, link_preview=False, thumb=thum, parse_mode="html"
         )
         os.remove(dl)
         os.remove(out)
